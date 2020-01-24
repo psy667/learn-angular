@@ -1,25 +1,23 @@
-import {NgModule} from '@angular/core'
-import {RouterModule, Routes} from '@angular/router'
-import {HomeComponent} from './home/home.component'
-import {AboutComponent} from './about/about.component'
-import {PostsComponent} from './posts/posts.component'
-import {PostComponent} from './post/post.component'
+import { NgModule } from '@angular/core';
+import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
+import {MainLayoutComponent} from "./shared/components/main-layout/main-layout.component";
+import {HomePageComponent} from "./home-page/home-page.component";
+import {PostPageComponent} from "./post-page/post-page.component";
 
-// http://localhost:4200/ -> HomeComponent
-// http://localhost:4200/about -> AboutComponent
-// http://localhost:4200/posts -> PostsComponent
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'about', component: AboutComponent},
-  {path: 'posts', component: PostsComponent},
-  {path: 'posts/:id', component: PostComponent}
-]
+  {path: '', component: MainLayoutComponent, children: [
+      {path: '', redirectTo: '/', pathMatch: 'full'},
+      {path: '', component: HomePageComponent},
+      {path: 'post/:id', component: PostPageComponent},
+  ]},
+  { path: 'admin', loadChildren: './admin/admin.module#AdminModule' }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: PreloadAllModules
+  })],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-
-}
+export class AppRoutingModule { }
