@@ -14,6 +14,7 @@ import {AuthGuard} from "./shared/services/auth.guard";
 import {SharedModule} from "../shared/shared.module";
 import { SearchPipe } from './shared/search.pipe';
 import { SearchHighlightPipe } from './shared/search-highlight.pipe';
+import { AlertComponent } from './shared/components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SearchHighlightPipe } from './shared/search-highlight.pipe';
     CreatePageComponent,
     EditPageComponent,
     SearchPipe,
-    SearchHighlightPipe
+    SearchHighlightPipe,
+    AlertComponent
   ],
   imports: [
     CommonModule,
