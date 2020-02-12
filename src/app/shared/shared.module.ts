@@ -1,8 +1,6 @@
 import {NgModule} from '@angular/core';
-import {HttpClientModule} from "@angular/common/http";
-import {QuillModule} from "ngx-quill";
-import { LoaderComponent } from './components/loader/loader.component';
-
+import {HttpClientModule} from '@angular/common/http';
+import {QuillModule} from 'ngx-quill';
 
 @NgModule({
   imports: [
@@ -11,9 +9,9 @@ import { LoaderComponent } from './components/loader/loader.component';
   ],
   exports: [
     HttpClientModule,
-    QuillModule,
-    LoaderComponent
-  ],
-  declarations: [LoaderComponent]
+    QuillModule
+  ]
 })
-export class SharedModule { }
+export class SharedModule {
+
+}
