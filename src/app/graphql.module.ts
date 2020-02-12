@@ -7,7 +7,6 @@ import {ApolloLink} from "apollo-link";
 
 const uri = 'https://fakeql.com/graphql/8ce30babb8fbcaade77a6d5cf83b5a7c';
 
-
 export function createApollo(httpLink: HttpLink) {
   const basic = setContext((operation, context) => ({
     headers: {
