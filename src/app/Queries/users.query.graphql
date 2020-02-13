@@ -1,0 +1,9 @@
+query GetUsers {
+    users {
+        firstname
+        id
+        posts(where: {claps_gt: 0}) {
+            claps
+        }
+    }
+}

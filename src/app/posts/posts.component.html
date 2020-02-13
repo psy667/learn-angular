@@ -1,9 +1,9 @@
-<h1>Posts:</h1>
 <ul>
     <li *ngFor="let post of posts$ | async">
-        <a routerLink="['post', post.id]"><h2>{{post.title}}</h2></a>
-        <div>by: {{post.user.firstname}}</div>
-        <a (click)="postsService.incrementPostClaps(post.id)">[clap]</a>
-        <span > {{post.claps}} </span>
+        <pre> </pre>
+        <button (click)="handleIncrementPostClaps(post.id)">{{post.claps}}</button>
+        <a [routerLink]="['post', post.id]">{{post.title}}</a>
+        <br/>
+        <span>by </span><a [routerLink]="['users', post.user.id]">{{post.user.firstname}}</a>
     </li>
 </ul>

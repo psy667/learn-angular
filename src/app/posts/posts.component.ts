@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {PostsService} from "../posts.service";
-import {GetPostsGQL} from "../Queries/posts.query";
+import {GetPostsGQL, IncrementPostClapsMutation} from "../Queries/posts.query";
 
 @Component({
   selector: 'app-posts',
@@ -15,7 +15,8 @@ export class PostsComponent implements OnInit {
 
   constructor(
       private getPostsGQL: GetPostsGQL,
-      private postsService: PostsService
+      private postsService: PostsService,
+      private incrementPostClaps: IncrementPostClapsMutation,
   )
   {}
 
@@ -26,5 +27,9 @@ export class PostsComponent implements OnInit {
             map(result => result.data.posts)
         )
 
+  }
+
+  handleIncrementPostClaps(id) {
+    this.incrementPostClaps.mutate({id}).subscribe();
   }
 }

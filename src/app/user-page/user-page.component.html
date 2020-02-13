@@ -1,0 +1,19 @@
+<div *ngIf="user$ | async as user">
+    <b>Name: </b><span>{{user.firstname}}</span><br/>
+    <b>Age: </b><span>{{user.age}}</span><br/>
+    <b>Rating: </b><span>{{user.rating}}</span><br/>
+
+    <ul *ngIf="user.posts.length; else noPosts">
+        <li *ngFor="let post of user.posts">
+            <pre> </pre>
+            <span>{{post.claps}} </span>
+            <span>{{post.date}} </span>
+            <a [routerLink]="['/post', post.id]">{{post.title}}</a>
+            <br/>
+        </li>
+    </ul>
+    <ng-template #noPosts>
+        No posts
+    </ng-template>
+</div>
+

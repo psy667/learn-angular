@@ -4,8 +4,12 @@ import {HttpLinkModule, HttpLink} from 'apollo-angular-link-http';
 import {InMemoryCache} from 'apollo-cache-inmemory';
 import { setContext } from 'apollo-link-context';
 import {ApolloLink} from "apollo-link";
+import {HttpClientModule} from "@angular/common/http";
+import {environment} from "../environments/environment";
+import {resolvers} from "./users.resolvers";
 
-const uri = 'https://fakeql.com/graphql/8ce30babb8fbcaade77a6d5cf83b5a7c';
+// const uri = environment.production;
+const uri = environment.gqlServer;
 
 export function createApollo(httpLink: HttpLink) {
   const basic = setContext((operation, context) => ({
@@ -17,11 +21,17 @@ export function createApollo(httpLink: HttpLink) {
   return {
     link: ApolloLink.from([basic, httpLink.create({uri})]),
     cache: new InMemoryCache(),
+    resolvers,
+    // typeDefs
   };
 }
 
 @NgModule({
-  exports: [ApolloModule, HttpLinkModule],
+  exports: [
+    HttpClientModule,
+    ApolloModule,
+    HttpLinkModule
+  ],
   providers: [
     {
       provide: APOLLO_OPTIONS,
