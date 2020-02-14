@@ -1,0 +1,10 @@
+Sort by:
+<button (click)="sortBy('name')">Name</button>
+<button (click)="sortBy('rating')">Rating</button>
+<div>{{sortParameter$ | async}}</div>
+<ul>
+    <li *ngFor="let user of users$ | async">
+        <pre> </pre>
+        <a [routerLink]="[user.id]">{{user.firstname}}</a><b>  {{user.rating}}</b>
+    </li>
+</ul>
