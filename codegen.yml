@@ -1,0 +1,15 @@
+overwrite: true
+schema: "https://fakeql.com/graphql/8ce30babb8fbcaade77a6d5cf83b5a7c"
+documents: "src/**/*.graphql"
+generates:
+  src/app/generated/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-apollo-angular"
+#      - "typescript-graphql-files-modules"
+#      - "typescript-document-nodes"
+#      - "fragment-matcher"
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"
