@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-learn-psy667": {
+      "hosting": {
+        "learn-angular": [
+          "angular-learn-psy667"
+        ]
+      }
+    }
+  }
+}

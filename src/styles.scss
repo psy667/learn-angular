@@ -1,297 +1,98 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-@import "~quill/dist/quill.core.css";
-@import "~quill/dist/quill.snow.css";
 
-:root {
-  --primary-color: #dc3545;
-  --dark-color: #333333;
-  --light-color: #f4f4f4;
-  --danger-color: #dc3545;
-  --success-color: #28a745;
-}
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
 
-body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  background-color: #fff;
-  color: #333;
-}
+$custom-orange: (
 
-a {
-  color: var(--primary-color);
-  cursor: pointer;
-  text-decoration: none;
+  50: #fff3e0,
 
-  &:hover {
-    color: #666;
-  }
-}
+  100: #ffe0b2,
 
-ul {
-  list-style: none;
-}
+  200: #ffcc80,
 
-img {
-  width: 100%;
-}
+  300: #ffb74d,
 
-.container {
-  max-width: 1100px;
-  margin: auto;
-  overflow: hidden;
-  padding: 0 2rem;
-}
+  400: #ffa726,
 
-.text-primary {
-  color: var(--primary-color);
-}
+  500: #ff9800,
 
-.text-dark {
-  color: var(--dark-color);
-}
+  600: #fb8c00,
 
-.text-success {
-  color: var(--success-color);
-}
+  700: #f57c00,
 
-.text-danger {
-  color: var(--danger-color);
-}
+  800: #ef6c00,
 
-.text-center {
-  text-align: center;
-}
+  900: #e65100,
 
-.card {
-  padding: 1rem;
-  border: #ccc 1px dotted;
-  margin: 0.7rem 0;
+  A100: #ffd180,
 
-  &-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  A200: #ffab40,
 
-  &-content {
-    margin-bottom: .5rem;
-  }
-}
+  A400: #ff9100,
 
-.list {
-  margin: 0.5rem 0;
+  A700: #ff6d00,
 
-  li {
-    padding-bottom: 0.3rem;
-  }
-}
+  contrast: (
 
-.btn {
-  display: inline-block;
-  background: var(--light-color);
-  color: #333;
-  padding: 0.4rem 1.3rem;
-  font-size: 1rem;
-  border: none;
-  cursor: pointer;
-  margin-right: 0.5rem;
-  transition: opacity 0.2s ease-in;
-  outline: none;
+    50: $black-87-opacity,
 
-  &:disabled {
-    cursor: not-allowed;
-    background: var(--light-color);
-    color: #111;
-  }
-}
+    100: $black-87-opacity,
 
-.btn-link {
-  background: none;
-  padding: 0;
-  margin: 0;
-}
+    200: $black-87-opacity,
 
-.btn-block {
-  display: block;
-  width: 100%;
-}
+    300: $black-87-opacity,
 
-.btn-sm {
-  font-size: 0.8rem;
-  padding: 0.3rem 1rem;
-  margin-right: 0.2rem;
-}
+    400: $black-87-opacity,
 
-.badge {
-  display: inline-block;
-  font-size: 0.8rem;
-  padding: 0.2rem 0.7rem;
-  text-align: center;
-  margin: 0.3rem;
-  background: var(--light-color);
-  color: #333;
-  border-radius: 5px;
-}
+    500: white,
 
-.alert {
-  padding: 0.7rem;
-  margin: 1rem 0;
-  opacity: 0.9;
-  background: var(--light-color);
-  color: #333;
-}
+    600: white,
 
-.btn-primary,
-.bg-primary,
-.badge-primary,
-.alert-primary {
-  background: var(--primary-color);
-  color: #fff;
-}
+    700: white,
 
-.btn-light,
-.bg-light,
-.badge-light,
-.alert-light {
-  background: var(--light-color);
-  color: #333;
-}
+    800: white,
 
-.btn-dark,
-.bg-dark,
-.badge-dark,
-.alert-dark {
-  background: var(--dark-color);
-  color: #fff;
-}
+    900: white,
 
-.btn-danger,
-.bg-danger,
-.badge-danger,
-.alert-danger {
-  background: var(--danger-color);
-  color: #fff;
-}
+    A100: $black-87-opacity,
 
-.btn-success,
-.bg-success,
-.badge-success,
-.alert-success {
-  background: var(--success-color);
-  color: #fff;
-}
+    A200: $black-87-opacity,
 
-.btn-white,
-.bg-white,
-.badge-white,
-.alert-white {
-  background: #fff;
-  color: #333;
-  border: #ccc solid 1px;
-}
+    A400: $black-87-opacity,
 
-.btn:hover {
-  opacity: 0.8;
-}
+    A700: white,
 
-.bg-light,
-.badge-light {
-  border: #ccc solid 1px;
-}
+  )
 
-.round-img {
-  border-radius: 50%;
-}
+);
+$learn-angular-primary: mat-palette($custom-orange);
 
-.form-control {
-  display: block;
-  color: #888;
-  margin-bottom: .8rem;
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$learn-angular-primary: mat-palette($custom-orange);
+$learn-angular-accent: mat-palette($mat-pink, A200, A100, A400);
 
-  &.invalid {
-    color: var(--primary-color);
-    input {
-      border-color: var(--primary-color);
-    }
-  }
+// The warn palette is optional (defaults to red).
+$learn-angular-warn: mat-palette($mat-red);
 
-  .validation {
-    color: var(--primary-color);
-  }
-}
+// Create the theme object (a Sass map containing all of the palettes).
+$learn-angular-theme: mat-dark-theme($learn-angular-primary, $learn-angular-accent, $learn-angular-warn);
 
-input[type='text'],
-input[type='email'],
-input[type='password'],
-input[type='date'],
-select,
-textarea {
-  display: block;
-  width: 100%;
-  padding: 0.4rem;
-  font-size: 1.2rem;
-  border: 1px solid #ccc;
-}
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($learn-angular-theme);
 
-input[type='submit'],
-button {
-  font: inherit;
-}
+/* You can add global styles to this file, and also import other style files */
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-table th,
-table td {
-  padding: 1rem;
-  text-align: left;
-}
-
-table th {
-  background: var(--light-color);
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.7rem 2rem;
-  z-index: 1;
-  width: 100%;
-  opacity: 0.9;
-  margin-bottom: 1rem;
-
-  &.main {
-    justify-content: center;
-    border-bottom: 1px solid var(--dark-color);
-  }
-
-  ul {
-    display: flex;
-  }
-
-  li.active a {
-    color: var(--dark-color);
-    font-weight: bold;
-    cursor: default;
-  }
-
-  a {
-    color: #fff;
-    padding: 0.45rem;
-    margin: 0 0.25rem;
-
-    &:hover {
-      color: var(--light-color);
-    }
-  }
-}

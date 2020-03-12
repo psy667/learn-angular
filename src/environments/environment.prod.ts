@@ -1,7 +1,12 @@
-import {Environment} from './interface';
-
-export const environment: Environment = {
+export const environment = {
   production: true,
-  apiKey: 'AIzaSyBeVNY1dO6dHpkj5e7EOZU2ctA4O-chAvQ',
-  fbDbUrl: 'https://angular-blog-e513b.firebaseio.com'
+  firebase: {
+    apiKey: "AIzaSyArlqY3VdupK1LQGBa1PynlSYoNOp4zbFs",
+    authDomain: "angular-learn-psy667.firebaseapp.com",
+    databaseURL: "https://angular-learn-psy667.firebaseio.com",
+    projectId: "angular-learn-psy667",
+    storageBucket: "angular-learn-psy667.appspot.com",
+    messagingSenderId: "843740154504",
+    appId: "1:843740154504:web:82581795dcc4ed1c5a2d3d"
+  }
 };
